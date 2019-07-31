@@ -3,7 +3,7 @@
     <a href="{{ route('users.show', $user) }}">
         {{ $user->name }}
     </a>
-    @can('destory', $user)
+    @can('destroy', $user)  <!-- 对页面做限制-->
         <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="float-right">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}

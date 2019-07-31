@@ -65,7 +65,7 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store']
+            'except' => ['create', 'store']
         ]);
 
         $this->middleware('guest',[
@@ -81,6 +81,7 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
+        $this->authorize('destroy', $user); //在此对model做限制
         $user->delete();
         session()->flash('success', '成功删除用户!');
         return back();
