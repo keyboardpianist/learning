@@ -14,6 +14,7 @@ class UsersController extends Controller
     }
     public function show(User $user)
     {
+        $this->authorize('show', $user);
         return view('users.show', compact('user'));
     }
 
@@ -65,6 +66,10 @@ class UsersController extends Controller
     {
         $this->middleware('auth', [
             'except' => ['create', 'store']
+        ]);
+
+        $this->middleware('guest',[
+            'only' => ['create']
         ]);
     }
 }

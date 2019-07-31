@@ -14,6 +14,11 @@ class UserPolicy
         return $currentUser->id === $user->id;
     }
 
+    public function show(User $currentUser, User $user)
+    {
+        return $currentUser->id === $user->id;
+    }
+
     /**
      * Create a new policy instance.
      *
