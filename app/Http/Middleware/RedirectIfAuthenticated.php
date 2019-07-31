@@ -15,6 +15,7 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
+    //处理已登录再次访问登录页面的情况
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
